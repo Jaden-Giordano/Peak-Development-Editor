@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Peak Development Editor</title>
+
+    <link type='text/css' rel='stylesheet' href='style/bootstrap.min.css' />
+    <link rel='stylesheet' href='fonts/font-awesome.css' />
+    <link type='text/css' rel='stylesheet' href='style/main.css' />
+  </head>
+  <body>
+    <div id='toolbar'>
+      <div class='btn-group' role='group'>
+        <button id='new-object' class='btn btn-default' title='New Object'><i class='fa fa-plus'></i></button>
+        <button id='save-project' class='btn btn-default' title='Save Project'><i class='fa fa-save'></i></button>
+      </div>
+      <div class='btn-group' role='group'>
+        <button id='select-mode' class='btn btn-default' title='Select Mode'><i class='fa fa-mouse-pointer'></i></button>
+        <button id='move-mode' class='btn btn-default' title='Move Mode'><i class='fa fa-arrows'></i></button>
+        <button id='rotate-mode' class='btn btn-default' title='Rotate Mode'><i class='fa fa-rotate-right'></i></button>
+        <button id='scale-mode' class='btn btn-default' title='Scale Mode'><i class='fa fa-expand'></i></button>
+      </div>
+      <div class='btn-group' role='group'>
+        <button id='undo' class='btn btn-default' title='Undo'><i class='fa fa-mail-reply'></i></button>
+        <button id='redo' class='btn btn-default' title='Redo'><i class='fa fa-mail-forward'></i></button>
+      </div>
+      <div class='btn-group' role='group'>
+        <button id='run' class='btn btn-default' title='Run'><i class='fa fa-play'></i></button>
+      </div>
+    </div>
+    <div id='project-explorer'>
+
+    </div>
+    <div id='level-editor'>
+      <canvas id='level-editor-canvas'>
+        Canvas not supported.
+      </canvas>
+    </div>
+    <div id='inspector'>
+      
+    </div>
+    <div id='asset-browser'>
+
+    </div>
+    <div id='console'>
+
+    </div>
+
+    <div id='new-project-prompt' class='modal'>
+      <div class='modal-content'>
+        <span class='close'><i class='fa fa-times-circle'></i></span>
+
+        <div class='centered'>
+          <label for='project-name'>Project Name:</label>
+          <input type='text' class='form-control' id='projectName' name='project-name' value='' />
+          <label for='project-dir'>Create Project in:</label>
+          <div class='input-group openDir'>
+            <span class='input-group-addon' id='addon1'><i class='fa fa-folder-open'></i></span>
+            <input id='projectDir' class='form-control' value='' aria-describedby='addon1' />
+          </div><br />
+
+          <button type='button' class='btn btn-default submit'>Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <div id='new-level-prompt' class='modal'>
+      <div class='modal-content'>
+        <span class='close'><i class='fa fa-times-circle'></i></span>
+
+        <div class='centered'>
+          <label for='level-name'>Level Name:</label>
+          <input type='text' name='level-name' class='form-control' id='levelName' value='' />
+          <br />
+
+          <button type='button' class='btn btn-default submit'>Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <script src='js/jquery-3.1.1.min.js'></script>
+    <script src='js/bootstrap.min.js'></script>
+    <script src='js/sizing.js'></script>
+    <script src='js/controller.js'></script>
+    <script src='js/editor.js'></script>
+
+    <script>if (window.module) module = window.module;</script>
+  </body>
+</html>

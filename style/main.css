@@ -1,0 +1,176 @@
+body {
+  margin: 0;
+}
+
+#toolbar {
+  position: fixed;
+
+  width: 100%;
+  height: 26px;
+
+  padding-left: 5px;
+
+  background-color: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+#toolbar button {
+  width: 24px;
+  height: 24px;
+
+  margin-top: 1px;
+  padding: 1px;
+}
+
+#toolbar i {
+  display: inline-block;
+
+  color: rgba(0, 0, 0, 0.8);
+}
+
+#project-explorer {
+  position: fixed;
+
+  width: 286px;
+  height: 400px;
+
+  top: 26px;
+
+  background-color: rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+#project-explorer ul {
+  padding: 2px 5px;
+  list-style-type: none;
+}
+
+#project-explorer ul li {
+  border-bottom: 1px solid #aaa;
+}
+
+#project-explorer ul li a {
+  text-decoration: none;
+}
+
+#project-explorer ul li a:hover {
+  cursor: pointer;
+}
+
+#level-editor {
+  position: fixed;
+
+  width: 385px;
+  height: 400px;
+
+  top: 26px;
+  left: 286px;
+
+  background-color: rgba(0, 0, 0, 1);
+}
+
+#inspector {
+  position: fixed;
+
+  width: 286px;
+  height: 400px;
+
+  top: 26px;
+  right: 0px;
+
+  background-color: rgba(0, 0, 0, 0.1);
+  border-left: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+#inspector .component {
+  padding: 2px 5px;
+}
+
+#inspector .component .componentName {
+  text-align: center;
+}
+
+#inspector .component .property {
+  margin: 2px 0px;
+}
+
+#asset-browser {
+  position: fixed;
+
+  width: 392px;
+  height: 176px;
+
+  bottom: 0;
+  left: 0;
+
+  background-color: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.13);
+  border-right: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+#console {
+  position: fixed;
+
+  width: 392px;
+  height: 176px;
+
+  bottom: 0;
+  right: 0;
+
+  background-color: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.13);
+  border-left: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+.modal {
+  display: none;
+
+  position: fixed;
+
+  z-index: 1;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: auto;
+
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  margin: 15% auto;
+  padding: 20px;
+
+  width: 60%;
+
+  background-color: #fefefe;
+  border-radius: 3px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.centered {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.center-align {
+  text-align: center;
+}

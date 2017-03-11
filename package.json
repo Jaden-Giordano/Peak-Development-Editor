@@ -1,0 +1,25 @@
+{
+  "name": "peak-development-editor",
+  "version": "1.0.0",
+  "description": "Editor",
+  "main": "main.js",
+  "dependencies": {
+    "electron": "^1.6.2"
+  },
+  "devDependencies": {
+    "electron": "^1.6.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jaden Giordano",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaden-Giordano/Peak-Development-Editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jaden-Giordano/Peak-Development-Editor/issues"
+  },
+  "homepage": "https://github.com/Jaden-Giordano/Peak-Development-Editor#readme"
+}
