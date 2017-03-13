@@ -12,7 +12,7 @@
       <header class="toolbar toolbar-header">
         <div class="toolbar-actions">
           <div class='btn-group' role='group'>
-            <button id='new-object' class='btn btn-default' title='New Object'><i class='fa fa-plus'></i></button>
+            <button id='new-level' class='btn btn-default' title='New Level'><i class='fa fa-plus'></i></button>
             <button id='save-project' class='btn btn-default' title='Save Project'><i class='fa fa-save'></i></button>
           </div>
           <div class='btn-group' role='group'>
@@ -32,7 +32,14 @@
         <div class="top-content">
           <div class="pane-group">
             <div class="pane-sm sidebar" id='project-explorer'>
-
+              <nav class="nav-group" id="objects">
+                <h5 class="nav-group-title">
+                  Objects
+                  <button class="btn btn-mini btn-default pull-right" id="new-object">
+                    <span class="fa fa-plus"></span>
+                  </button>
+                </h5>
+              </nav>
             </div>
             <div class="pane" id="level-editor">
               <canvas id='level-editor-canvas'>
@@ -56,14 +63,7 @@
         </div>
       </div>
     </div>
-    <!--
-    <div id='asset-browser'>
 
-    </div>
-    <div id='console'>
-
-    </div>
-    -->
     <div id='new-project-prompt' class='modal'>
       <div class='modal-content'>
         <span class='close'><i class='fa fa-times-circle'></i></span>

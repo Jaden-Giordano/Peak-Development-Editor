@@ -36,10 +36,10 @@ ipcRenderer.on('update', function(event, args) {
     var level = args.args;
     if (level) {
       var explorer = $('#project-explorer');
-      explorer.empty();
-      explorer.append('<nav class="nav-group" id="objects"></nav>');
       var objects = explorer.find('#objects');
-      objects.append('<h5 class="nav-group-title">Objects</h5>');
+      objects.find('a').each(function() {
+        $(this).remove();
+      });
       level.objects.forEach(function(item) {
         objects.append(parseFMString('<a class="nav-group-item" id="?"><i class="fa fa-cube"></i>?</a>', [item.name + '' + item.id, item.name]));
         objects.find('#' + item.name + '' + item.id).click(function() {
