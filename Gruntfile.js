@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   grunt.util.linefeed = '\n';
 
   // Project configuration.
-  grunt.initConfig({
+  var config = {
     pkg: grunt.file.readJSON('package.json'),
 
     // Metadata.
@@ -30,16 +30,28 @@ module.exports = function(grunt) {
       },
     },
 
+    babel: {
+      options: {
+        sourceMap: false,
+        presets: ['es2015']
+      },
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= meta.srcPath %>app/js/',
+            src: ['**/*.js'],
+            dest: '<%= meta.distPath %>js/'
+          }
+        ]
+      }
+    },
+
     copy: {
-      main: {
+      app: {
         expand: true,
         cwd: '<%= meta.srcPath %>app/',
-        src: '**',
-        dest: '<%= meta.distPath %>/'
-      },
-      package: {
-        expand: true,
-        src: 'package.json',
+        src: ['**', '!js/**'],
         dest: '<%= meta.distPath %>'
       },
       fonts: {
@@ -59,7 +71,9 @@ module.exports = function(grunt) {
         dest: '<%= meta.distPath %>css/main.min.css'
       }
     }
-  });
+  }
+
+  grunt.initConfig(config);
 
   // Load the plugins
   require('load-grunt-tasks')(grunt, {
@@ -69,7 +83,7 @@ module.exports = function(grunt) {
 
   // Tasks
   grunt.registerTask('dist-css', ['sass', 'cssmin']);
-  grunt.registerTask('dist', ['clean', 'dist-css', 'copy']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'babel', 'copy']);
 
   grunt.registerTask('default', ['dist']);
 };
