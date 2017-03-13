@@ -22,7 +22,7 @@ function createWindow() {
       slashes: true
     }));
 
-    //win.toggleDevTools();
+    win.toggleDevTools();
 
     win.on('closed', function() {
       win = null;
