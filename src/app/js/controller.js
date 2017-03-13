@@ -37,11 +37,17 @@ ipcRenderer.on('update', function(event, args) {
     if (level) {
       var explorer = $('#project-explorer');
       explorer.empty();
+      explorer.append('<nav class="nav-group" id="objects"></nav>');
+      var objects = explorer.find('#objects');
+      objects.append('<h5 class="nav-group-title">Objects</h5>');
       level.objects.forEach(function(item) {
-        explorer.append('<ul id="objects"></ul>')
-        var objects = explorer.find('#objects');
-        objects.append(parseFMString('<li><a id="?">?</a></li>', [item.name + '' + item.id, item.name]));
+        objects.append(parseFMString('<a class="nav-group-item" id="?"><i class="fa fa-cube"></i>?</a>', [item.name + '' + item.id, item.name]));
         objects.find('#' + item.name + '' + item.id).click(function() {
+          objects.find('a').each(function() {
+            $(this).removeClass('active');
+          });
+
+          $(this).addClass('active');
           var inspector = $('#inspector');
           inspector.empty();
           if (item.components) {
