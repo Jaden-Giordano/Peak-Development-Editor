@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   grunt.util.linefeed = '\n';
 
   // Project configuration.
-  grunt.initConfig({
+  var config = {
     pkg: grunt.file.readJSON('package.json'),
 
     // Metadata.
@@ -30,20 +30,32 @@ module.exports = function(grunt) {
       },
     },
 
-    browserify: {
-      vendor: {
-        src: '<%= meta.srcPath %>app/**/*.js',
-        dest: '<%= meta.distPath %>vendor.js',
-        options: {
-          require:['jquery']
+    concat: {
+      options: {
+        sourceMap: true
+      },
+      js: {
+        src: '<%= meta.srcPath %>app/js/**/*.js',
+        dest: '<%= meta.distPath %>js/tmp/script.js'
+      }
+    },
+
+    babel: {
+      options: {
+        sourceMap: true
+      },
+      dist: {
+        files: {
+          'dist/js/vendor.js': 'dist/js/tmp/script.js'
         }
       }
-    }
-
+    },
+    
     copy: {
-      package: {
+      app: {
         expand: true,
-        src: 'package.json',
+        cwd: '<%= meta.srcPath %>app/',
+        src: ['**', '!js/**'],
         dest: '<%= meta.distPath %>'
       },
       fonts: {
@@ -63,7 +75,9 @@ module.exports = function(grunt) {
         dest: '<%= meta.distPath %>css/main.min.css'
       }
     }
-  });
+  }
+
+  grunt.initConfig(config);
 
   // Load the plugins
   require('load-grunt-tasks')(grunt, {
@@ -73,7 +87,14 @@ module.exports = function(grunt) {
 
   // Tasks
   grunt.registerTask('dist-css', ['sass', 'cssmin']);
-  grunt.registerTask('dist', ['clean', 'dist-css', 'copy']);
+  grunt.registerTask('config-babel', 'Configures babel', function() {
+    config.babel.options.inputSourceMap = grunt.file.readJSON('dist/js/tmp/script.js.map');
+  });
+  grunt.registerTask('clean-babel', 'Clean temporary babel files', function() {
+    grunt.file.delete('dist/js/tmp');
+  });
+  grunt.registerTask('transpile', ['concat', 'config-babel', 'babel', 'clean-babel']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'transpile', 'copy']);
 
-  grunt.registerTask('default', ['browserify', 'dist']);
+  grunt.registerTask('default', ['dist']);
 };
