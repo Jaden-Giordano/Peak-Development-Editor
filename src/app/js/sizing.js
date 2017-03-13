@@ -1,31 +1,21 @@
-const TOOLBAR_HEIGHT = 26;
-const PANE_WIDTH = 286;
-const PANE_HEIGHT = 176;
-const BOTTOM_PANE_HEIGHT = TOOLBAR_HEIGHT + PANE_HEIGHT;
+const BOTTOM_PANE_HEIGHT = 150;
 
 function resize() {
   const width = window.innerWidth;
   const height = window.innerHeight;
 
-  document.getElementById('project-explorer').style.height = (height - BOTTOM_PANE_HEIGHT) + 'px';
+  let toolbarHeight = $('.toolbar').innerHeight();
 
-  let levelEditor = document.getElementById('level-editor');
-  let lvEWidth = (width - (PANE_WIDTH * 2)), lvEHeight = (height - BOTTOM_PANE_HEIGHT);
-  levelEditor.style.width = lvEWidth + 'px';
-  levelEditor.style.height = lvEHeight + 'px';
-  let levelEditorCanvas = $('#level-editor-canvas');
-  levelEditorCanvas.attr('width', lvEWidth);
-  levelEditorCanvas.attr('height', lvEHeight);
+  const topHeight = height - toolbarHeight - BOTTOM_PANE_HEIGHT;
+  $('.top-content').height(topHeight);
 
-  document.getElementById('inspector').style.height = (height - BOTTOM_PANE_HEIGHT) + 'px';
+  const lvEditorWidth = $('#level-editor').innerWidth();
+  const lvEditorHeight = $('#level-editor').innerHeight();
 
-  document.getElementById('asset-browser').style.width = ((width-1) / 2) + 'px';
-
-  document.getElementById('console').style.width = ((width-1) / 2) + 'px';
+  let editorCanvas = $('#level-editor-canvas');
+  editorCanvas.attr('width', lvEditorWidth);
+  editorCanvas.attr('height', lvEditorHeight);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  resize();
-});
-
+resize();
 window.onresize = resize;
