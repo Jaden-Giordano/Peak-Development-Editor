@@ -30,27 +30,23 @@ module.exports = function(grunt) {
       },
     },
 
-    concat: {
+    babel: {
       options: {
-        sourceMap: true
+        sourceMap: false,
+        presets: ['es2015']
       },
-      js: {
-        src: '<%= meta.srcPath %>app/js/**/*.js',
-        dest: '<%= meta.distPath %>js/tmp/script.js'
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= meta.srcPath %>app/js/',
+            src: ['**/*.js'],
+            dest: '<%= meta.distPath %>js/'
+          }
+        ]
       }
     },
 
-    babel: {
-      options: {
-        sourceMap: true
-      },
-      dist: {
-        files: {
-          'dist/js/vendor.js': 'dist/js/tmp/script.js'
-        }
-      }
-    },
-    
     copy: {
       app: {
         expand: true,
@@ -87,14 +83,7 @@ module.exports = function(grunt) {
 
   // Tasks
   grunt.registerTask('dist-css', ['sass', 'cssmin']);
-  grunt.registerTask('config-babel', 'Configures babel', function() {
-    config.babel.options.inputSourceMap = grunt.file.readJSON('dist/js/tmp/script.js.map');
-  });
-  grunt.registerTask('clean-babel', 'Clean temporary babel files', function() {
-    grunt.file.delete('dist/js/tmp');
-  });
-  grunt.registerTask('transpile', ['concat', 'config-babel', 'babel', 'clean-babel']);
-  grunt.registerTask('dist', ['clean', 'dist-css', 'transpile', 'copy']);
+  grunt.registerTask('dist', ['clean', 'dist-css', 'babel', 'copy']);
 
   grunt.registerTask('default', ['dist']);
 };

@@ -1,10 +1,10 @@
-const {
+import {
   ipcRenderer
-} = require('electron');
-const {
-  dialog
-} = require('electron').remote;
-const path = require('path');
+} from 'electron';
+import Electron from 'electron';
+const dialog = Electron.remote.dialog;
+import path from 'path';
+import $ from 'jquery';
 
 var currentLevel = null;
 
