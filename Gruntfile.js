@@ -30,13 +30,17 @@ module.exports = function(grunt) {
       },
     },
 
+    browserify: {
+      vendor: {
+        src: '<%= meta.srcPath %>app/**/*.js',
+        dest: '<%= meta.distPath %>vendor.js',
+        options: {
+          require:['jquery']
+        }
+      }
+    }
+
     copy: {
-      main: {
-        expand: true,
-        cwd: '<%= meta.srcPath %>app/',
-        src: '**',
-        dest: '<%= meta.distPath %>/'
-      },
       package: {
         expand: true,
         src: 'package.json',
@@ -71,5 +75,5 @@ module.exports = function(grunt) {
   grunt.registerTask('dist-css', ['sass', 'cssmin']);
   grunt.registerTask('dist', ['clean', 'dist-css', 'copy']);
 
-  grunt.registerTask('default', ['dist']);
+  grunt.registerTask('default', ['browserify', 'dist']);
 };
