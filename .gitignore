@@ -10,3 +10,9 @@ pids
 
 # Dependency directory
 node_modules
+
+# Builds
+dist
+
+# Sass
+.sass-cache
